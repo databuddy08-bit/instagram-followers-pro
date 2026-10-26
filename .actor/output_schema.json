@@ -1,0 +1,21 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Instagram Followers & Following Pro output",
+    "properties": {
+        "accounts": {
+            "type": "string",
+            "title": "Accounts (Overview)",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        },
+        "audience": {
+            "type": "string",
+            "title": "Audience analysis (overlap, mutuals)",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/AUDIENCE_ANALYSIS"
+        },
+        "runSummary": {
+            "type": "string",
+            "title": "Run summary",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/RUN_SUMMARY"
+        }
+    }
+}

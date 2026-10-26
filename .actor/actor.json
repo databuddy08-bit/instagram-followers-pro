@@ -1,0 +1,15 @@
+{
+    "actorSpecification": 1,
+    "name": "instagram-followers-pro",
+    "title": "Instagram Followers & Following Pro \u2014 Resume, Enrichment, Mutuals & Audience Quality",
+    "description": "Export followers and following of Instagram profiles with your own session: safe pacing, exact resume across runs, profile enrichment with business contacts, filters, mutuals, audience overlap and low-quality signals.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md"
+}

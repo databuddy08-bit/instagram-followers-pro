@@ -1,0 +1,319 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "transformation": {
+                "fields": [
+                    "sourceUsername",
+                    "type",
+                    "username",
+                    "fullName",
+                    "profileUrl",
+                    "profilePicUrl",
+                    "isVerified",
+                    "isPrivate",
+                    "isMutual",
+                    "hasActiveStory",
+                    "lowQualitySignals",
+                    "followersCount",
+                    "followingCount",
+                    "postsCount",
+                    "biography",
+                    "externalUrl",
+                    "businessCategory",
+                    "businessEmail",
+                    "businessPhone",
+                    "businessAddress",
+                    "isBusinessAccount",
+                    "userId",
+                    "position",
+                    "error",
+                    "errorDescription",
+                    "status",
+                    "inputUrl",
+                    "fixHint",
+                    "scrapedAt"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "sourceUsername": {
+                        "label": "Profile",
+                        "format": "text"
+                    },
+                    "type": {
+                        "label": "List",
+                        "format": "text"
+                    },
+                    "username": {
+                        "label": "Username",
+                        "format": "text"
+                    },
+                    "fullName": {
+                        "label": "Full name",
+                        "format": "text"
+                    },
+                    "profileUrl": {
+                        "label": "Profile URL",
+                        "format": "link"
+                    },
+                    "profilePicUrl": {
+                        "label": "Picture",
+                        "format": "image"
+                    },
+                    "isVerified": {
+                        "label": "Verified",
+                        "format": "boolean"
+                    },
+                    "isPrivate": {
+                        "label": "Private",
+                        "format": "boolean"
+                    },
+                    "isMutual": {
+                        "label": "Mutual",
+                        "format": "boolean"
+                    },
+                    "hasActiveStory": {
+                        "label": "Active story",
+                        "format": "boolean"
+                    },
+                    "lowQualitySignals": {
+                        "label": "Low-quality signals",
+                        "format": "array"
+                    },
+                    "followersCount": {
+                        "label": "Followers",
+                        "format": "number"
+                    },
+                    "followingCount": {
+                        "label": "Following",
+                        "format": "number"
+                    },
+                    "postsCount": {
+                        "label": "Posts",
+                        "format": "number"
+                    },
+                    "biography": {
+                        "label": "Bio",
+                        "format": "text"
+                    },
+                    "externalUrl": {
+                        "label": "Website",
+                        "format": "link"
+                    },
+                    "businessCategory": {
+                        "label": "Category",
+                        "format": "text"
+                    },
+                    "businessEmail": {
+                        "label": "Email",
+                        "format": "text"
+                    },
+                    "businessPhone": {
+                        "label": "Phone",
+                        "format": "text"
+                    },
+                    "businessAddress": {
+                        "label": "Address",
+                        "format": "text"
+                    },
+                    "isBusinessAccount": {
+                        "label": "Business",
+                        "format": "boolean"
+                    },
+                    "userId": {
+                        "label": "User ID",
+                        "format": "text"
+                    },
+                    "position": {
+                        "label": "Position",
+                        "format": "number"
+                    },
+                    "error": {
+                        "label": "Error",
+                        "format": "text"
+                    },
+                    "errorDescription": {
+                        "label": "Error description",
+                        "format": "text"
+                    },
+                    "status": {
+                        "label": "Status",
+                        "format": "text"
+                    },
+                    "inputUrl": {
+                        "label": "Input",
+                        "format": "text"
+                    },
+                    "fixHint": {
+                        "label": "How to fix",
+                        "format": "text"
+                    },
+                    "scrapedAt": {
+                        "label": "Scraped at",
+                        "format": "date"
+                    }
+                }
+            }
+        },
+        "leads": {
+            "title": "Leads (enriched)",
+            "transformation": {
+                "fields": [
+                    "sourceUsername",
+                    "type",
+                    "username",
+                    "fullName",
+                    "followersCount",
+                    "businessCategory",
+                    "businessEmail",
+                    "businessPhone",
+                    "externalUrl",
+                    "biography",
+                    "profileUrl"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "sourceUsername": {
+                        "label": "Profile",
+                        "format": "text"
+                    },
+                    "type": {
+                        "label": "List",
+                        "format": "text"
+                    },
+                    "username": {
+                        "label": "Username",
+                        "format": "text"
+                    },
+                    "fullName": {
+                        "label": "Full name",
+                        "format": "text"
+                    },
+                    "followersCount": {
+                        "label": "Followers",
+                        "format": "number"
+                    },
+                    "businessCategory": {
+                        "label": "Category",
+                        "format": "text"
+                    },
+                    "businessEmail": {
+                        "label": "Email",
+                        "format": "text"
+                    },
+                    "businessPhone": {
+                        "label": "Phone",
+                        "format": "text"
+                    },
+                    "externalUrl": {
+                        "label": "Website",
+                        "format": "link"
+                    },
+                    "biography": {
+                        "label": "Bio",
+                        "format": "text"
+                    },
+                    "profileUrl": {
+                        "label": "Profile URL",
+                        "format": "link"
+                    }
+                }
+            }
+        },
+        "audience": {
+            "title": "Audience quality",
+            "transformation": {
+                "fields": [
+                    "sourceUsername",
+                    "type",
+                    "username",
+                    "isVerified",
+                    "isPrivate",
+                    "isMutual",
+                    "lowQualitySignals",
+                    "followersCount",
+                    "postsCount"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "sourceUsername": {
+                        "label": "Profile",
+                        "format": "text"
+                    },
+                    "type": {
+                        "label": "List",
+                        "format": "text"
+                    },
+                    "username": {
+                        "label": "Username",
+                        "format": "text"
+                    },
+                    "isVerified": {
+                        "label": "Verified",
+                        "format": "boolean"
+                    },
+                    "isPrivate": {
+                        "label": "Private",
+                        "format": "boolean"
+                    },
+                    "isMutual": {
+                        "label": "Mutual",
+                        "format": "boolean"
+                    },
+                    "lowQualitySignals": {
+                        "label": "Low-quality signals",
+                        "format": "array"
+                    },
+                    "followersCount": {
+                        "label": "Followers",
+                        "format": "number"
+                    },
+                    "postsCount": {
+                        "label": "Posts",
+                        "format": "number"
+                    }
+                }
+            }
+        },
+        "failed": {
+            "title": "Inputs without results",
+            "transformation": {
+                "fields": [
+                    "status",
+                    "inputUrl",
+                    "errorDescription",
+                    "fixHint"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "status": {
+                        "label": "Status",
+                        "format": "text"
+                    },
+                    "inputUrl": {
+                        "label": "Input",
+                        "format": "text"
+                    },
+                    "errorDescription": {
+                        "label": "Error description",
+                        "format": "text"
+                    },
+                    "fixHint": {
+                        "label": "How to fix",
+                        "format": "text"
+                    }
+                }
+            }
+        }
+    }
+}

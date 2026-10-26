@@ -1,0 +1,193 @@
+{
+    "title": "Instagram Followers & Following Pro input",
+    "description": "Export followers and following of Instagram profiles with your own session.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "sessionCookie": {
+            "title": "Your Instagram session cookie",
+            "type": "string",
+            "editor": "textfield",
+            "isSecret": true,
+            "sectionCaption": "Login (required)",
+            "description": "Instagram only shows follower lists to logged-in accounts. Paste the \"sessionid\" cookie of instagram.com (or the whole cookie / a cookie-extension JSON export). Stored encrypted by Apify. Use a secondary account — see the README for how to get it and how to stay safe."
+        },
+        "usernames": {
+            "title": "Instagram profiles",
+            "type": "array",
+            "editor": "stringList",
+            "sectionCaption": "What to scrape",
+            "description": "Usernames (natgeo, @natgeo) or profile URLs. A URL ending in /followers/ or /following/ scrapes just that list.",
+            "prefill": [
+                "natgeo"
+            ]
+        },
+        "type": {
+            "title": "Lists to export",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "followers",
+                "following",
+                "both"
+            ],
+            "enumTitles": [
+                "Followers",
+                "Following",
+                "Both (marks mutual followers)"
+            ],
+            "default": "followers",
+            "description": "Each row says FOLLOWER or FOLLOWING in \"type\". With \"Both\", following is read first so followers get \"isMutual\"."
+        },
+        "maxResultsPerProfile": {
+            "title": "Max accounts per list",
+            "type": "integer",
+            "minimum": 1,
+            "default": 500,
+            "description": "Accounts to save per profile and list. Start small: big lists take long and every request uses your account. Filtered accounts do not count."
+        },
+        "maxResults": {
+            "title": "Max accounts in total",
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Stop after this many saved (and charged) accounts across all profiles. 0 = no limit."
+        },
+        "enrichProfiles": {
+            "title": "Enrich profiles (bio, counts, business contacts)",
+            "type": "boolean",
+            "default": false,
+            "sectionCaption": "Extra data",
+            "description": "Open each account's profile to add bio, links, follower/following/post counts, business category, email, phone and address. One extra request per account — much slower, charged per enriched profile."
+        },
+        "onlyVerified": {
+            "title": "Only verified accounts",
+            "type": "boolean",
+            "default": false,
+            "sectionCaption": "Filters (filtered accounts are never charged)",
+            "description": "Keep only accounts with the blue badge."
+        },
+        "excludePrivate": {
+            "title": "Leave out private accounts",
+            "type": "boolean",
+            "default": false,
+            "description": "Skip accounts that are private."
+        },
+        "excludeNoProfilePic": {
+            "title": "Leave out accounts without a profile picture",
+            "type": "boolean",
+            "default": false,
+            "description": "Skip accounts showing the default grey avatar."
+        },
+        "excludeLowQuality": {
+            "title": "Leave out low-quality accounts",
+            "type": "boolean",
+            "default": false,
+            "description": "Skip accounts with 2+ low-quality signals (no picture, no name, digit-heavy username; with enrichment also no posts, no bio, follows far more than followers)."
+        },
+        "nameKeywords": {
+            "title": "Name / username contains",
+            "type": "array",
+            "editor": "stringList",
+            "default": [],
+            "description": "Keep accounts whose username or full name contains any of these (any case)."
+        },
+        "bioKeywords": {
+            "title": "Bio contains (needs enrichment)",
+            "type": "array",
+            "editor": "stringList",
+            "default": [],
+            "description": "Keep accounts whose bio or business category contains any of these. Turns on enrichment."
+        },
+        "minFollowers": {
+            "title": "Min followers (needs enrichment)",
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "0 = off. Turns on enrichment."
+        },
+        "maxFollowers": {
+            "title": "Max followers (needs enrichment)",
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Find micro-influencers, e.g. 50000. 0 = off. Turns on enrichment."
+        },
+        "onlyBusiness": {
+            "title": "Only business / creator accounts (needs enrichment)",
+            "type": "boolean",
+            "default": false,
+            "description": "Turns on enrichment."
+        },
+        "onlyWithContact": {
+            "title": "Only accounts with email, phone or website (needs enrichment)",
+            "type": "boolean",
+            "default": false,
+            "description": "For lead lists. Turns on enrichment."
+        },
+        "resumeFromLastRun": {
+            "title": "Resume where the last run stopped",
+            "type": "boolean",
+            "default": true,
+            "sectionCaption": "Run options",
+            "description": "Big lists can be exported over several runs: each run continues exactly where the previous one stopped (limit, safety stop or timeout) — no repeats, no gaps."
+        },
+        "skipPreviouslyScraped": {
+            "title": "Only accounts not exported before",
+            "type": "boolean",
+            "default": false,
+            "description": "Skip accounts already saved for this profile and list in earlier runs — e.g. schedule daily with \"Resume\" off to get only new followers."
+        },
+        "stateStoreName": {
+            "title": "Memory store name",
+            "type": "string",
+            "editor": "textfield",
+            "pattern": "^[a-z0-9-]{1,63}$",
+            "default": "instagram-followers-pro-state",
+            "description": "Named key-value store for resume points and exported IDs."
+        },
+        "pageSize": {
+            "title": "Accounts per request",
+            "type": "integer",
+            "minimum": 12,
+            "maximum": 100,
+            "default": 50,
+            "sectionCaption": "Account safety",
+            "description": "Instagram's own app asks for 50. Lower is gentler, higher is faster."
+        },
+        "minDelaySec": {
+            "title": "Min pause between requests (seconds)",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 120,
+            "default": 3,
+            "description": "Random human-like pauses protect the account. Do not go below 2 for long runs."
+        },
+        "maxDelaySec": {
+            "title": "Max pause between requests (seconds)",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 300,
+            "default": 6,
+            "description": "Upper end of the random pause."
+        },
+        "proxyConfiguration": {
+            "title": "Proxy (one sticky IP for the whole run)",
+            "type": "object",
+            "editor": "proxy",
+            "prefill": {
+                "useApifyProxy": true,
+                "apifyProxyGroups": [
+                    "RESIDENTIAL"
+                ]
+            },
+            "default": {
+                "useApifyProxy": true,
+                "apifyProxyGroups": [
+                    "RESIDENTIAL"
+                ]
+            },
+            "description": "Residential, ideally in the country where you normally use this account (set the country). The run keeps one IP — it never rotates, because a logged-in session hopping IPs triggers Instagram checks."
+        }
+    }
+}
